@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
 
 		Account account = new Account();
 		account.setCurrency("CNY");
-		account.setAccountTYpe(AccountType.User);
+		account.setAccountType(AccountType.User.toString());
 		account.setBalance(BigDecimal.ZERO);
 		account.setActive(true);
 		accountRepository.save(account);
@@ -55,6 +55,7 @@ public class UserServiceImpl implements UserService {
 		user.setUserName(userName);
 		user.setEmail(email);
 		user.setAccountId(account.getId());
+		user.setAccount(account);
 		user.setActive(true);
 		userRepository.save(user);
 

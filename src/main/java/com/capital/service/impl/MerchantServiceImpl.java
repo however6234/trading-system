@@ -70,7 +70,7 @@ public class MerchantServiceImpl implements MerchantService {
         }
 		Account account = new Account();
 		account.setCurrency("CNY");
-		account.setAccountTYpe(AccountType.MERCHANT);
+		account.setAccountType(AccountType.MERCHANT.toString());
 		account.setBalance(BigDecimal.ZERO);
 		account.setDailySales(BigDecimal.ZERO);
 		account.setActive(true);

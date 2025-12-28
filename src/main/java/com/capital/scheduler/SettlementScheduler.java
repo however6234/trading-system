@@ -51,10 +51,9 @@ public class SettlementScheduler {
 						dailySales);
 			}
 
-			merchant.getAccount().resetDailySales();
+			merchant.resetDailySales();
 		}
 
-		merchantRepository.saveAll(merchants);
 		log.info("Daily settlement completed.");
 	}
 

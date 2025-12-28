@@ -63,7 +63,7 @@ public class TransactionServiceImpl implements TransactionService {
 		}
 
 		merchant.addBalance(totalCost);
-
+		
 		accountRepository.save(account);
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("totalCost", totalCost);

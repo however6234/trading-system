@@ -34,21 +34,7 @@ public enum StatusCode {
     PRODUCT_SKU_EXISTS("5002", "Product sku already exists"),
     INSUFFICIENT_STOCK("5003", "Insufficient stock"),
     PRODUCT_INACTIVE("5004", "Product is inactive"),
-    FAILED_TO_REDUCE_STOCK("5004", "Failed to reduce stock"),
-    
-    // ========== 订单模块 ==========
-    ORDER_NOT_FOUND("6001", "订单不存在"),
-    ORDER_CREATION_FAILED("6002", "订单创建失败"),
-    ORDER_UPDATE_FAILED("6003", "订单更新失败"),
-    ORDER_CANCELLED("6004", "订单已取消"),
-    ORDER_COMPLETED("6005", "订单已完成"),
-    ORDER_STATUS_INVALID("6006", "订单状态无效"),
-    
-    // ========== 交易模块 ==========
-    TRANSACTION_FAILED("7001", "交易失败"),
-    PAYMENT_FAILED("7002", "支付失败"),
-    INVALID_TRANSACTION("7003", "无效的交易"),
-    TRANSACTION_ROLLBACK("7004", "交易回滚");
+    FAILED_TO_REDUCE_STOCK("5004", "Failed to reduce stock");
     
     private final String code;
     private final String message;

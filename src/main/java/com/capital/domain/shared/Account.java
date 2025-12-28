@@ -41,7 +41,7 @@ public class Account {
 	private String currency = "CNY";
 	
 	@Column(name = "account_type",nullable = false)
-	private AccountType accountTYpe;
+	private String accountType;
 	
 	@Column(name = "daily_sales")
 	private BigDecimal dailySales = BigDecimal.ZERO;

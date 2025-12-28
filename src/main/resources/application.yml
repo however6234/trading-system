@@ -29,5 +29,4 @@ springfox:
 logging:
   level:
     root: DEBUG
-    org.springframework: DEBUG
     com.capital: DEBUG

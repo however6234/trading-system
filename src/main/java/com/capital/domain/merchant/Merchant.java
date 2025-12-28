@@ -41,12 +41,11 @@ public class Merchant {
     @Column(name = "code")
     private String code;
     
-    @Column(name = "account_id", unique = true)
+    @Column(name = "account_id", insertable = false, updatable = false, unique = true)
     private Long accountId;
     
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "account_id", referencedColumnName = "id", 
-                insertable = false, updatable = false)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
     
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
@@ -65,5 +64,9 @@ public class Merchant {
     }
     public void addBalance(BigDecimal amount) {
         this.account.addBalance(amount);
+    }
+    
+    public void resetDailySales() {
+        this.account.resetDailySales();
     }
 }

@@ -2,6 +2,7 @@ package com.capital.domain.user;
 
 import java.math.BigDecimal;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -43,15 +44,14 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
     
-    @Column(name = "account_id", unique = true)
-    private Long accountId;  // 关联的账户ID
+    @Column(name = "account_id", insertable = false, updatable = false, unique = true)
+    private Long accountId;
     
     @Column(name = "is_active")
     private boolean active = true;
     
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "account_id", referencedColumnName = "id", 
-                insertable = false, updatable = false)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
     
     public void recharge(BigDecimal amount) {
