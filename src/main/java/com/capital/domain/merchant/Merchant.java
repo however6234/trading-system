@@ -52,6 +52,10 @@ public class Merchant {
     @JoinColumn(name = "merchant_id")
     private List<Product> products = new ArrayList<>();
     
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "merchant_id")
+    private MerchantAccountMonitor merchantAccountMonitor;
+    
     public void addProduct(Product product) {
         this.products.add(product);
     }
@@ -68,5 +72,8 @@ public class Merchant {
     
     public void resetDailySales() {
         this.account.resetDailySales();
+    }
+    public void resetDailyBalance() {
+    	this.merchantAccountMonitor.resetDailyBalance(this.account.getBalance());
     }
 }

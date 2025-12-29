@@ -38,6 +38,9 @@ public class SettlementWarn {
 	@Column(name = "merchant_id", unique = true)
 	private Long merchantId;
 	
+	@Column(name = "pre_balance",nullable = false)
+	private BigDecimal preBalance = BigDecimal.ZERO;
+	
 	@Column(name = "balance",nullable = false)
 	private BigDecimal balance = BigDecimal.ZERO;
 

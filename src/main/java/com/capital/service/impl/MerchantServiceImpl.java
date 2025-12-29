@@ -7,12 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.capital.domain.merchant.Merchant;
+import com.capital.domain.merchant.MerchantAccountMonitor;
 import com.capital.domain.product.Product;
 import com.capital.domain.shared.Account;
 import com.capital.enums.AccountType;
 import com.capital.exception.StatusCode;
 import com.capital.exception.TradingException;
 import com.capital.repository.AccountRepository;
+import com.capital.repository.MerchantAccountMonitorRepository;
 import com.capital.repository.MerchantRepository;
 import com.capital.service.MerchantService;
 import com.capital.util.LocalIdGenerator;
@@ -25,6 +27,9 @@ public class MerchantServiceImpl implements MerchantService {
 	
 	@Autowired
 	private AccountRepository accountRepository;
+	
+	@Autowired
+	private MerchantAccountMonitorRepository merchantAccountMonitorRepository;
 	
 	@Autowired
 	private LocalIdGenerator localIdGenerator;
@@ -82,7 +87,13 @@ public class MerchantServiceImpl implements MerchantService {
         merchant.setAccountId(account.getId());
         merchant.setAccount(account);
         merchantRepository.save(merchant);
-		return merchant;
+        
+        MerchantAccountMonitor merchantAccountMonitor = new MerchantAccountMonitor();
+        merchantAccountMonitor.setAccountId(account.getId());
+        merchantAccountMonitor.setMerchantId(merchant.getId());
+        merchant.setMerchantAccountMonitor(merchantAccountMonitor);
+        merchantRepository.save(merchant);
+        return merchant;
 	}
 
 	@Override

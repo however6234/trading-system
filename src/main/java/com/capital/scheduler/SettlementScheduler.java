@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.capital.domain.merchant.Merchant;
 import com.capital.domain.shared.SettlementWarn;
+import com.capital.repository.MerchantAccountMonitorRepository;
 import com.capital.repository.MerchantRepository;
 import com.capital.repository.SettlementWarnRepository;
 
@@ -27,6 +28,9 @@ public class SettlementScheduler {
 	
 	@Autowired
 	private SettlementWarnRepository settlementWarnRepository;
+	
+	@Autowired
+	private MerchantAccountMonitorRepository merchantAccountMonitorRepository;
 
 //	@Scheduled(cron = "0 0 0 * * ?")
 	@Scheduled(fixedRate = 6000) 
@@ -39,10 +43,13 @@ public class SettlementScheduler {
 		for (Merchant merchant : merchants) {
 			BigDecimal dailySales = merchant.getAccount().getDailySales();
 			BigDecimal balance = merchant.getAccount().getBalance();
+			
+			BigDecimal preBalance = merchant.getMerchantAccountMonitor().getBalance();
 
-			if (balance.compareTo(dailySales) != 0) {
+			if (balance.subtract(preBalance).compareTo(dailySales) == 0) {
 				SettlementWarn settlementWarn = new SettlementWarn();
 				settlementWarn.setBalance(balance);
+				settlementWarn.setPreBalance(preBalance);
 				settlementWarn.setDailySales(dailySales);
 				settlementWarn.setMerchantId(merchant.getId());
 				settlementWarn.setCreatedAt(LocalDateTime.now());
@@ -51,6 +58,7 @@ public class SettlementScheduler {
 						dailySales);
 			}
 
+			merchant.resetDailyBalance();
 			merchant.resetDailySales();
 		}
 
