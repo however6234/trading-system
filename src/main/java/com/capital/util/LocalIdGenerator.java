@@ -7,10 +7,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
-/**
- * 本地自增ID生成器
- * 最简单，适合单机应用
- */
 @Component
 @Slf4j
 public class LocalIdGenerator implements IdGenerator {
@@ -19,7 +15,7 @@ public class LocalIdGenerator implements IdGenerator {
     
     private final Map<String, AtomicLong> sequences = new ConcurrentHashMap<>();
     
-    private long startId = 10000L;  // 从10000开始，避免ID太小
+    private long startId = 10000L;
     
     @Override
     public Long nextId() {
