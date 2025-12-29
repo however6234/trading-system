@@ -14,7 +14,6 @@ import com.capital.enums.AccountType;
 import com.capital.exception.StatusCode;
 import com.capital.exception.TradingException;
 import com.capital.repository.AccountRepository;
-import com.capital.repository.MerchantAccountMonitorRepository;
 import com.capital.repository.MerchantRepository;
 import com.capital.service.MerchantService;
 import com.capital.util.LocalIdGenerator;
@@ -27,9 +26,6 @@ public class MerchantServiceImpl implements MerchantService {
 	
 	@Autowired
 	private AccountRepository accountRepository;
-	
-	@Autowired
-	private MerchantAccountMonitorRepository merchantAccountMonitorRepository;
 	
 	@Autowired
 	private LocalIdGenerator localIdGenerator;
