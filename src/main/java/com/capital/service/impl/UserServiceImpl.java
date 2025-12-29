@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.capital.AccountType;
 import com.capital.domain.shared.Account;
 import com.capital.domain.user.User;
+import com.capital.enums.AccountType;
 import com.capital.exception.StatusCode;
 import com.capital.exception.TradingException;
 import com.capital.repository.AccountRepository;

@@ -1,4 +1,4 @@
-package com.capital;
+package com.capital.enums;
 
 public enum AccountType {
 	MERCHANT("Merchant"), User("User");

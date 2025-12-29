@@ -6,10 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.capital.AccountType;
 import com.capital.domain.merchant.Merchant;
 import com.capital.domain.product.Product;
 import com.capital.domain.shared.Account;
+import com.capital.enums.AccountType;
 import com.capital.exception.StatusCode;
 import com.capital.exception.TradingException;
 import com.capital.repository.AccountRepository;
