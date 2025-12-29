@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.capital.domain.merchant.Merchant;
 import com.capital.domain.shared.SettlementWarn;
-import com.capital.repository.MerchantAccountMonitorRepository;
 import com.capital.repository.MerchantRepository;
 import com.capital.repository.SettlementWarnRepository;
 
@@ -29,9 +28,6 @@ public class SettlementScheduler {
 	@Autowired
 	private SettlementWarnRepository settlementWarnRepository;
 	
-	@Autowired
-	private MerchantAccountMonitorRepository merchantAccountMonitorRepository;
-
 //	@Scheduled(cron = "0 0 0 * * ?")
 	@Scheduled(fixedRate = 6000) 
 	@Transactional
