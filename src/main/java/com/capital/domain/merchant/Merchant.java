@@ -57,12 +57,14 @@ public class Merchant {
     private MerchantAccountMonitor merchantAccountMonitor;
     
     public void addProduct(Product product) {
-        this.products.add(product);
+    	if (product!=null) {
+    		this.products.add(product);
+		}
     }
     
     public Product findProductBySku(String sku) {
         return this.products.stream()
-                .filter(p -> p.getSku().equals(sku))
+                .filter(p -> sku.equals(p.getSku()))
                 .findFirst()
                 .orElse(null);
     }
